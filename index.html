@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
+<head><script>/* سندباد عُمان الصغير: تسجيل إنهاء اللعبة لمرفأ السفينة */function __sbDone(){var r='';try{r=(location.pathname.split('/')[1]||'').toLowerCase().replace(/\.+$/,'');var c=null;try{c=JSON.parse(localStorage.getItem('sindbad-current')||'null')}catch(e){}var w=(c&&c.name)||'';var d={};try{d=JSON.parse(localStorage.getItem('sindbad-done')||'{}')||{}}catch(e){}(d[w]=d[w]||{})[r]=Date.now();localStorage.setItem('sindbad-done',JSON.stringify(d))}catch(e){}try{if(window.parent&&window.parent!==window)window.parent.postMessage({sindbadDone:r},'*')}catch(e){}}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>تطوّر الدولة في عصر الخلافة الراشدة</title>
@@ -292,7 +292,7 @@ function flyStars(px,py,n){const t=$('sNum').getBoundingClientRect();let k=0;for
 function confetti(n){const c=['#ffd96b','#e0364b','#1f9d57','#7a2e6e','#ff9e4a','#fff'];for(let i=0;i<n;i++){const d=document.createElement('div');d.className='cf';d.style.left=Math.random()*100+'vw';d.style.background=c[i%c.length];d.style.animationDuration=(1.4+Math.random()*1.4)+'s';d.style.animationDelay=Math.random()*.4+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),3400)}}
 /* النهاية */
 function rate(t){return t>=15?['مستكشف بارع','أنت تعرف الدولة الراشدة جيدًا!']:t>=11?['مستكشف متمكّن','أداء رائع، استمر!']:t>=7?['مستكشف مجتهد','أحسنت، أعد المحاولة لتجمع نجومًا أكثر.']:['بداية موفّقة','أعد اللعب لتجمع نجومًا أكثر.']}
-function finish(){locked=true;track();$('trackFill').style.width='100%';const t=earned.reduce((a,b)=>a+b,0),m=Q.length*3,r=rate(t);
+function finish(){locked=true;__sbDone();track();$('trackFill').style.width='100%';const t=earned.reduce((a,b)=>a+b,0),m=Q.length*3,r=rate(t);
  $('rTitle').textContent=(name?name+'، ':'')+r[0];$('rNum').textContent=t;$('rMax').textContent=m;$('rMsg').textContent=r[1];
  $('rStars').innerHTML=Array.from({length:m/3},(_,i)=>{const on=i<Math.round(t/3);return `<svg viewBox="0 0 24 24" class="${on?'on':''}" style="animation-delay:${i*.15}s"><use href="#star"/></svg>`}).join('');
  $('res').classList.add('on');sfx.win();confetti(70)}
