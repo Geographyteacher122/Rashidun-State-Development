@@ -304,17 +304,20 @@ addEventListener('resize',placeFoot);placeFoot();if(document.fonts&&document.fon
 $('goBtn').onclick=()=>{sfx.tap();start()};
 /* الشهادة */
 $('certBtn').onclick=async()=>{try{await document.fonts.load('900 40px Tajawal')}catch(_){}
+ if(!name){try{var q=JSON.parse(localStorage.getItem('sindbad-current')||'{}');name=(q.name||'').trim()}catch(_){}}
+ if(!name){try{var w=JSON.parse(localStorage.getItem('sindbad-oman-v1')||'{}');name=(w.name||'').trim()}catch(_){}}
+ if(!name){try{name=(prompt('اكتب اسمك ليظهر على الشهادة')||'').trim().slice(0,40)}catch(_){}}
  const W=1600,H=1130,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.direction='rtl';x.textAlign='center';
  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#fff9e8');g.addColorStop(1,'#f6e1b0');x.fillStyle=g;x.fillRect(0,0,W,H);
  x.strokeStyle='#c9962e';x.lineWidth=14;x.strokeRect(36,36,W-72,H-72);x.strokeStyle='#7a2e6e';x.lineWidth=4;x.strokeRect(62,62,W-124,H-124);
  const T=(s,y,sz,col,w)=>{x.font=`${w||700} ${sz}px Tajawal,Tahoma,sans-serif`;x.fillStyle=col;x.fillText(s,W/2,y)};
  const t=earned.reduce((a,b)=>a+b,0),m=Q.length*3;
  x.save();x.translate(W/2,250);x.fillStyle='#ffd96b';x.strokeStyle='#c9962e';x.lineWidth=6;for(let i=0;i<2;i++){x.rotate(Math.PI/4);x.strokeRect(-70,-70,140,140);}x.beginPath();x.arc(0,0,44,0,7);x.fill();x.restore();
- T('شهادة تقدير',420,96,'#4a1d4f',900);T('تُمنح هذه الشهادة للطالب/ة',500,38,'#2a1d0e',600);
+ T('شهادة تقدير',420,96,'#4a1d4f',900);T('تُمنح هذه الشهادة إلى',500,38,'#2a1d0e',600);
  T(name||'..........................',610,92,'#7a2e6e',900);
  x.strokeStyle='#c9a24a';x.setLineDash([12,10]);x.lineWidth=3;x.beginPath();x.moveTo(300,640);x.lineTo(1300,640);x.stroke();x.setLineDash([]);
- T('لإتمامه/ا اللعبة التعليمية في درس',720,40,'#2a1d0e',600);T('تطوّر الدولة في عصر الخلافة الراشدة',800,60,'#14305f',900);
- T(`وحصوله/ا على ${t} من ${m} نجمة.`,890,42,'#2a1d0e',600);T(rate(t)[0],960,44,'#8a5a06',800);
+ T('تقديرًا لإتمام اللعبة التعليمية في درس',720,40,'#2a1d0e',600);T('تطوّر الدولة في عصر الخلافة الراشدة',800,60,'#14305f',900);
+ T(`ونيل ${t} من ${m} نجمة.`,890,42,'#2a1d0e',600);T(rate(t)[0],960,44,'#8a5a06',800);
  T('إعداد: أ. عهود العبرية - مدرسة وادي غول للتعليم الأساسي (1-9)',1040,30,'#4a1d4f',800);
  const a=document.createElement('a');a.download='شهادة-الخلافة-الراشدة.png';a.href=c.toDataURL('image/png');document.body.appendChild(a);a.click();a.remove()};
 </script>
